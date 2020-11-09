@@ -23,7 +23,7 @@ public class SetupTestUsers {
 
   
     
-    User user = new User("user", "kode");
+    User user = new User("user", "kode123");
     User admin = new User("admin", "kodeord");
     User both = new User("user_admin", "kodetest");
 
