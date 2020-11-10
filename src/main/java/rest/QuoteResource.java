@@ -9,7 +9,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-import utils.QuoteFetcher;
+import utils.DataFetcher;
 
 //Todo Remove or change relevant parts before ACTUAL use
 @Path("quotes")
@@ -19,7 +19,7 @@ public class QuoteResource {
     @GET
     @Produces({MediaType.APPLICATION_JSON})
     public String getAllQuotes() throws InterruptedException, ExecutionException, TimeoutException, IOException {
-        return QuoteFetcher.runParallel(es); 
+        return DataFetcher.fetchQuotes(es); 
     }
   
 }

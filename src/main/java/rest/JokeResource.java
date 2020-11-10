@@ -11,7 +11,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.MediaType;
-import utils.JokeFetcher;
+import utils.DataFetcher;
 
 /**
  * REST Web Service
@@ -26,7 +26,7 @@ public class JokeResource {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public String getJokes() throws IOException, InterruptedException, ExecutionException, TimeoutException {
-        return JokeFetcher.runParallel(es); 
+        return DataFetcher.fetchJokes(es); 
     }
 
    
