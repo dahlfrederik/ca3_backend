@@ -1,10 +1,6 @@
 
 package DTO;
 
-/**
- * 
- * @author josef
- */
 public class DadDTO {
     private String joke; 
     private String id; 

@@ -1,9 +1,5 @@
 package DTO;
 
-/**
- * 
- * @author josef
- */
 public class ChuckDTO {
     private String value; 
     private String id; 

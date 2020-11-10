@@ -1,20 +1,22 @@
 package DTO;
-   
-/**
- * 
- * @author josef
- */
-public class CombinedDTO {
+
+public class CombinedJokeDTO {
      private String dadID; 
      private String dadValue; 
      private String chuckID; 
      private String chuckValue; 
 
-    public CombinedDTO(ChuckDTO chuckDTO, DadDTO dadDTO) {
+     private String insult; 
+     private String insultNumber; 
+
+    public CombinedJokeDTO(ChuckDTO chuckDTO, DadDTO dadDTO,  InsultDTO insultDTO) {
         this.dadID = dadDTO.getId();
         this.dadValue = dadDTO.getValue();
         this.chuckID = chuckDTO.getId();
         this.chuckValue = chuckDTO.getValue();
+       
+        this.insult = insultDTO.getInsult(); 
+        this.insultNumber = insultDTO.getNumber(); 
     }
 
     public String getDadID() {
