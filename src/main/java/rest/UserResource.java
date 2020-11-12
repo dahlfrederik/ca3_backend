@@ -43,8 +43,14 @@ public class UserResource {
     @Produces(MediaType.APPLICATION_JSON)
     @Path("all")
     public String allUsers() {
-        return gson.toJson(UserFacade.getUserFacade(EMF).getAllUsers()); 
-        
+        EntityManager em = EMF.createEntityManager();
+        try {
+            TypedQuery<User> query = em.createQuery ("select u from User u",entities.User.class);
+            List<User> users = query.getResultList();
+            return "[" + users.size() + "]";
+        } finally {
+            em.close();
+        }
     }
 
     @GET
