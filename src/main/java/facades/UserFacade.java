@@ -2,6 +2,7 @@ package facades;
 
 import entities.Role;
 import entities.User;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import security.errorhandling.AuthenticationException;
@@ -59,17 +60,29 @@ public class UserFacade {
         }
     }
     
+    public List<User> getAllUsers() {
+        EntityManager em = emf.createEntityManager(); 
+        try {
+            List<User> userList = em.createQuery("SELECT u from User u").getResultList();
+            return userList; 
+        } finally {
+            em.close();
+        }
+    }
+    
     
     public void addUser(String userName, String password){
         EntityManager em = emf.createEntityManager(); 
         User user = new User(userName, password); 
         
         try{
+            em.getTransaction().begin();
             Role userRole = new Role("user");
             user.addRole(userRole);
             em.persist(user);
-        } finally{
             em.getTransaction().commit();
+        } finally{
+            em.close(); 
         } 
     }
       
